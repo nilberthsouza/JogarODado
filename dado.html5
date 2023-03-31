@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dado Virtual</title>
+  </head>
+  <body>
+    <h1>Dado Virtual</h1>
+    <label for="numero">Digite um número de 1 a 6:</label>
+    <input type="text" id="numero" name="numero">
+    <br><br>
+    <button onclick="jogar()">Jogar Dado</button>
+    <br><br>
+    <img id="imagem" src="" alt="Lado do Dado">
+    <p id="resultado"></p>
+
+    <script>
+      function jogar() {
+        // Captura o valor digitado na caixa de texto
+        var valorDigitado = parseInt(document.getElementById("numero").value);
+
+        // Verifica se o valor digitado é um número entre 1 e 6
+        if (isNaN(valorDigitado) || valorDigitado < 1 || valorDigitado > 6) {
+          alert("Por favor, digite um número entre 1 e 6.");
+        } else {
+          // Gera um número aleatório entre 1 e 6
+          var numeroSorteado = Math.floor(Math.random() * 6) + 1;
+
+          // Exibe a imagem correspondente ao número sorteado
+          document.getElementById("imagem").src = "Lado" + numeroSorteado + ".png";
+
+          // Verifica se o valor digitado é igual ao número sorteado
+          if (valorDigitado == numeroSorteado) {
+            document.getElementById("resultado").innerHTML = "Acertou!";
+          } else {
+            document.getElementById("resultado").innerHTML = "Errou!";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
